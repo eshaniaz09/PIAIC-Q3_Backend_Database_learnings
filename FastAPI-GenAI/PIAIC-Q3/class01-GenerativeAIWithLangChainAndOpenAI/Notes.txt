@@ -1,0 +1,26 @@
+**************Introduction to langChain***************
+
+LLMs=> Large language models that processes and generate text on the base of input. 
+LangChain is the framework designed to help developers to create applications powered by large 
+large language models (LLMs)
+We can call the existing LLMs models using langChain easily.
+Vector stores=> are used to store the unstructured date. The databases that store the 
+vector representation of text for efficient retrievals. Our custom data or knowledge is 
+store in vectors
+Chains=> Sequence of operations that manage data flow between different components.
+Agents=> Dynamic systems that uses LLMs to determine actions,often involving multiple 
+steps and tools.
+ 
+
+ Why we use dev-container and docker=> 
+
+Dev Containers are built on top of Docker. Docker ensures the consistent environment,
+while dev containers offer a streamlined way to configure and manage these environments
+for development purposes.
+Purpose: Dev containers are used to create consistent, isolated development environments.
+They help developers ensure that their code works the same way across different machines without having to configure individual development setups.
+How: They leverage Docker containers to create these environments, bundling dependencies, 
+tools, and code.
+Benefit: Developers can quickly set up or replicate environments with a single
+configuration (usually a .devcontainer folder), which simplifies onboarding and
+collaboration.

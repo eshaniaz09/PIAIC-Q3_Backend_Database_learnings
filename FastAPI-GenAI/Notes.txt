@@ -1,0 +1,168 @@
+**\*\***\*\*\*\***\*\***FAST_ATP**\*\***\*\*\*\***\*\***
+Communication btw backend and frontend is through http protocol
+The backend is a RESTful API that exposes endpoints for the frontend to interact with. The frontend sends
+requests to the backend to retrieve data, send data, or perform actions.
+The backend is responsible for handling the business logic, data storage, and validation. It returns data in
+JSON format to the frontend.
+The frontend is responsible for rendering the user interface, handling user input, and sending requests to the
+backend.
+
+**\*\***\***\*\***Backend-development-lifeCycle**\*\***\***\*\***
+Major python function=>
+Major duties=> receive the frontend-requests and returns data in response.
+=> receive the frontend requests through logic , loops and list etc and the same function send response.
+=> This function talks to many third-party softwares , databases or AI-models to fulfil the requests
+Three possible ways for backend is Django,flask,Fast-API
+
+=> What is API=> All the Communications btw frontend , and backend is through apis
+
+RESTful api?
+=> REST is a software architecture style that defines a set of principles for designing networked applications.
+=> The acronym REST stands for Representational State of Resource.
+=> RESTful APIs is an architectural style for designing networked applications. It is based on the idea
+of resources identified by URIs, manipulated using a fixed set of operations.
+=> The apis that return data in the JSON format is called rest-api
+
+**\*\*\*\***\*\*\*\***\*\*\*\***website-documentation-for-backend\***\*\*\*\*\***\*\***\*\*\*\*\***
+=> Swagger website=> we use Swagger to document the backend API endpoints and parameters
+=> Strip-website: Have a complete documentation of apis
+=> RESTful API is a type of API that follows the REST architectural style.
+=> It is based on the idea of resources identified by URIs, manipulated using a fixed set of
+operations.
+=> The main characteristics of a RESTful API are:
+=> Resource-based: Everything in REST is a resource, such as a user, product, or order
+=> Client-server architecture: The client and server are separate, with the client making requests to the server
+=> Stateless: Each request from the client to the server must contain all the information necessary to
+complete the request
+
+\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***Postman\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
+=> Post-man => we use Postman to initialize the requests to use in the backend
+=> Postman also make the documentation of frontend and backend development
+=> API-gateway => we use API-gateway to manage the backend API endpoints and parameters
+
+=> Methods:
+
+1. GET: Retrieve data from the server
+2. POST: Send data to the server
+3. PUT: Update data on the server
+4. DELETE: Delete data from the server
+5. PATCH: Partially update data on the server
+6. HEAD: Retrieve metadata about the requested resource
+7. OPTIONS: Describe the communication options for the target resource
+8. CONNECT: Establish a tunnel to the server specified by the URI
+
+=> When we define the function in python for requests/response, we also have to define the Methods like GET,POST,PUT etc
+=> We use the decorator @app.route() to define the methods and the endpoint of the API
+
+\***\*\*\*\*\*\*\***\*\*\***\*\*\*\*\*\*\***SERVER-APPLICATIONS**\*\***\*\***\*\***\*\***\*\***\*\***\*\***
+we use the server application to run the python backend code
+After making python backend code , we give it to the server application thought which the users(mobile,web wtc..) can access or give
+request to our application through server-application and this is called cloud computing
+
+**\*\*\*\***\*\***\*\*\*\***Cloud-Computing**\*\*\*\***\*\***\*\*\*\***
+=> Cloud computing is a model for delivering computing services over the internet, where resources such as
+servers, storage, databases, software, and applications are provided as a service to users on-demand
+=> Cloud computing is a type of computing that relies on shared pools of configurable computer resources, such
+as networks, servers, storage, applications, and services, that can be rapidly provisioned and released
+
+Types of cloud-Computing:
+=> Public cloud: The cloud infrastructure is owned and managed by a third-party provider, such as Amazon
+Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP)
+=> Private cloud: The cloud infrastructure is owned and managed by the organization itself, or a third-party
+provider manages it on-premises
+=> Hybrid cloud: A combination of public and private cloud services, where some resources are hosted in the
+public cloud and others in the private cloud
+=> Multi-cloud: Using multiple cloud providers to achieve greater flexibility, scalability, and cost savings
+
+Now in our cloud-server-application in which or python backend code is placed:
+we call the cloud-server-application through Postman by using http-request
+http-request contains:
+GET(The-type-of-request) https://server-application-path(ip-adress):our-pythoncode-server-port/function(requestByUser)
+GET https://192.131.1:30000/bills
+PUT https://192.131.1:30000/carts
+POST https://192.131.1:30000/payment
+
+https://ip-adress:PortNumber/route
+https://techloset.com/Services
+
+**\*\*\*\***\*\***\*\*\*\***Poetry\***\*\*\*\*\*\*\***\*\***\*\*\*\*\*\*\***
+Poetry is a Python package for building command-line applications. It allows you to write Python code that
+can be run from the command line, and provides a lot of features to make it easy to build
+command-line applications.
+
+After installation and set up, make folder using poerty in cmd:
+poetry new hello-fastapi --name todos
+-folder: tests contain built-in file **init**.py, here make files to test our project
+-folder: todos contain built-in file **init**.py, here make files to run our project => main.py
+
+#Todos learning app:
+
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()
+
+# defining the get api
+
+@app.get("/gettodos") #This is responsible to catch the frontend request and match the /gettodos rout and call the gettodos function in response , the function below is called in the frontend request not in this python program, it only defines here
+
+# function definition
+
+def gettodos():
+print("Get todos called")
+return "Congratulations 😍 Get todos called"
+
+@app.get("/helloWorld")
+def helloWorld():
+return "Hello esha welcome to postman"
+
+@app.get("/getSingleTodo")
+def getSingleTodo():
+print("Get single todo called")
+return "Get single todo called"
+
+@app.post("/getSingleTodo")
+def getSingleTodo():
+print("Get single todo called")
+return "Get single todo called"
+
+@app.put("/updateTodo")
+def updateTodo():
+return "Update todo called"
+
+@app.delete("/deleteTodo")
+def deleteTodo():
+return "Delete todo called"
+
+# Note:
+
+# The rout-name/function-name can be same but only in the case the api type should be different
+
+# For example: @app.get("/gettodos") and @app.post("/gettodos") are allowed
+
+# but @app.get("/gettodos") and @app.get("/gettodos") are not allowed.
+
+# Now have to run our python program all the time by using uvicorn library
+
+# What is uvicorn:
+
+# uvicorn is a ASGI server for python, it is used to run the fastapi application
+
+# it is used to run the fastapi application in the production environment ,development environment,testing environment
+
+def start():
+uvicorn.run("todos.main:app", host="127.0.0.1", port=8080, reload=True)
+
+# 127.0.0.1 and 0.0.0.0 is the local host ip address
+
+# how to run this start function=> IN pyproject/toml file we have to write:
+
+# [tool.poetry.scripts]
+
+# start= "todos.main:start"
+
+# Now in the cmd run => poetry run start
+
+# Note:How get the documentation of our project :
+
+# http://127.0.0.1:8080/docs (all methods and rout created are shown in this link )
